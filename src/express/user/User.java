@@ -39,7 +39,7 @@ public class User extends JFrame {
         bt5 = new JButton("查看回复");
         back = new JButton("⬅");
 
-        //返回监听，分情况
+        //返回监听，根据用户名最前一位分情况
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -31,3 +31,33 @@
 7）投诉与建议模块
 
 普通用户对快递员进行问题投诉与建议，系统管理员与网点负责人对用户的投诉可以做出处理与回复。
+
+# 数据库信息
+本项目是结合数据库进行的，所以使用的信息都需要与数据库之间进行交互。因此，需要对数据库的结构有一定的了解。
+
+根据`java`文件`GroupLayoutTest.java `中的代码
+```java
+public static String dbURL = "jdbc:sqlserver:// localhost;DatabaseName=kuaidi;encrypt=true;trustServerCertificate=true";
+conn = DriverManager.getConnection(dbURL, "my_user", "user");
+```
+我们这个项目是使用的本地服务器，建立的数据库名为**kuaidi**，登录名为`my_user`，访问密码为`user`，为了方便进行操作，该用户的权限为管理员权限
+## 登录时使用的数据表
+登录时，我们需要确认登录人的身份，并根据其身份来确定登录人的信息。故对于每一种身份的人，我们都需要建立一个关系表。因此，在数据库中，我们先设计四个关系表，分别为`用户`；`快递员`；`系统管理员`；`工作人员`；其中每个关系表都拥有两个不能为空的属性，分别为 `id` 和 `pw` 表示用户名和密码，用户名为字符串类型`nchar`，密码为虚拟数值类型`varchar`
+
+在用户关系表中，通过注册窗口我们可以知道，用户的信息还包括用户名 `username-nchar(10)` 性别 `usersex-nchar(10)` 用户电话 `usertel-varchar(15)` 用户地址 `loc-nchar(50)`
+
+# 窗口、功能模块介绍
+
+## 登录窗口
+
+运行文件`GroupLayoutTest.java` ，我们进入登录界面
+
+<img src="./README/image-20230614143446398.png" alt="image-20230614143446398" style="zoom:67%;" />
+
+在这里面我们通过数据账号和密码进入系统，若没有账号密码也可以通过【注册】按钮点击进行注册
+
+## 注册窗口
+
+在登录窗口点击【注册】即可进入注册窗口，在注册窗口进行注册的默认身份都是用户，
+
+<img src="./README/image-20230614143612151.png" alt="image-20230614143612151" style="zoom:75%;" />
