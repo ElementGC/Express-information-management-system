@@ -72,7 +72,6 @@ public class Register extends JFrame {
             int count = res1.getRow();
             System.out.println(count);
             id = "u" + String.valueOf(++count);
-//            System.out.println(id);
         } catch (Exception ee) {
             ee.printStackTrace();
             System.out.println("错误！错误！");
@@ -89,8 +88,12 @@ public class Register extends JFrame {
                 name = tf3.getText();
 
                 try {
-                    //从输入的文本框里获取输入的数据，然后做对比
-                    //'"+account+"'这里这个表示的是变量account
+                    //判断两次密码是否相同
+                    if( !password1.equals(password2)){
+                        String s = "两次密码输入不一致，请确认后重新输入";
+                        JOptionPane.showMessageDialog(null, s,"警告", JOptionPane.PLAIN_MESSAGE);
+                        return;
+                    }
                     String sql = "select id from yh";
                     sql = "INSERT INTO 用户(username,usersex,usertel,id,pw,loc) VALUES ('"+name+"','"+sex+"','"+phoneNumber+"','"+id+"','"+password1+"','"+address+"')";
                     GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
