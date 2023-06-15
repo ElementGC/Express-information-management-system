@@ -103,7 +103,7 @@ public class Manager extends JFrame {
                 try {
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
-                    String  sql = "select goodnum from expressinformation";
+                    String  sql = "select goodid from express_info";
                     GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
                     ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
                     res.last();

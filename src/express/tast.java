@@ -28,23 +28,6 @@ public class tast {
             System.out.println("连接数据库失败");
         }
         Statement stmt = conn.createStatement();
-
-        // 执行插入操作
-        String sql1 = "insert into 厂家表 values ('C4','南京邮电大学出版社')";
-        int count1 = stmt.executeUpdate(sql1);
-        System.out.println("插入了" + count1 + "条数据");
-        // 执行查询操作
-        String sql4 = "select * from 厂家表";
-        ResultSet rs = stmt.executeQuery(sql4);
-        // 遍历结果集
-        while (rs.next()) {
-            String id = rs.getString("厂家编号");
-            String name = rs.getString("厂家名称");
-            System.out.println(id + "\t" + name + "\t" );
-        }
-
-        rs.close();
-        stmt.close();
         conn.close();
     }
 }

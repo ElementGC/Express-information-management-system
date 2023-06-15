@@ -71,18 +71,16 @@ public class Personalim extends JFrame {
                 dispose();
             }
         });
-
+        // 获取用户信息
         try {
-
-//            System.out.println(account);
             sql = "select * from 用户 where id = '"+account+"'";
             GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
             ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
             while (res.next()) {
-                name = res.getString(1);
-                sex = res.getString(2);
-                phoneNumber = res.getString(3);
-                address = res.getString(6);
+                name = res.getString("username");
+                sex = res.getString("usersex");
+                phoneNumber = res.getString("usertel");
+                address = res.getString("loc");
             }
         }
         catch (Exception ee) {

@@ -83,7 +83,6 @@ public class Crewim extends JFrame {
             //获取RedultSet对象获取的个数
             res.last();
             count = res.getRow();
-//            System.out.println(count);输出的是当前总个数
             count += 30000;
         } catch (Exception ee) {
             ee.printStackTrace();

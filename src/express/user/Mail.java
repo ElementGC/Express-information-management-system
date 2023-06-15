@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
-import java.util.Random;
 
 //寄件
 public class Mail extends JFrame{
@@ -34,7 +33,7 @@ public class Mail extends JFrame{
     String phoneNumber = null;
     String phoneNumbes = null;
     //快递编号
-    String goodnum;
+    String goodid;
     //快递员编号
     String pid;
 
@@ -67,16 +66,14 @@ public class Mail extends JFrame{
 
         //自动生成快递单号
         try {
-            String sql1 = "select goodnum from expressinformation";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            String sql1 = "select goodid from express_info";
+            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             ResultSet res1 = GroupLayoutTest.statement.executeQuery(sql1);
             //获取RedultSet对象获取的个数
             res1.last();
             int count = res1.getRow();
-//            System.out.println(count);
             count += 10000;
-            goodnum = String.valueOf(++count);
-//            System.out.println(id);
+            goodid = String.valueOf(++count);
         } catch (Exception ee) {
             ee.printStackTrace();
             System.out.println("错误！错误！");
@@ -123,11 +120,11 @@ public class Mail extends JFrame{
                 try {
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
-                    String sql = "insert into expressinformation(goodnum,expressstatus,expresslocation,receiver,receivertel,receiverloc,sender,sendertel,senderloc,pid,uid)values('"+goodnum+"','待发货','"+adds+"','"+namer+"','"+phoneNumber+"','"+addr+"','"+names+"','"+phoneNumbes+"','"+adds+"','null','"+account+"')";
+                    String sql = "insert into express_info(goodid,expressstatus,expressposition,receiver,receivertel,receiverloc,sender,sendertel,senderloc,pid,uid)values('"+ goodid +"','待发货','"+adds+"','"+namer+"','"+phoneNumber+"','"+addr+"','"+names+"','"+phoneNumbes+"','"+adds+"','null','"+account+"')";
                     GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
                     int res = GroupLayoutTest.statement.executeUpdate(sql);
 //                    System.out.println(res);
-                    String s = "寄件成功！快递单号为：" + goodnum;
+                    String s = "寄件成功！快递单号为：" + goodid;
                     JOptionPane.showMessageDialog(null, s,
                             "通知", JOptionPane.PLAIN_MESSAGE);
                     //返回到用户窗口
@@ -136,7 +133,7 @@ public class Mail extends JFrame{
                     dispose();
                 } catch (Exception ee) {
                     ee.printStackTrace();
-                    System.out.println("密码输入错误！请从新输入");
+                    System.out.println("信息错误");
                 }
             }
         });

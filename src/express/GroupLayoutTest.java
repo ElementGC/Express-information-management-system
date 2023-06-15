@@ -183,7 +183,7 @@ public class GroupLayoutTest extends JFrame {
         this.getContentPane().setLayout(layout);
 
         GroupLayout.SequentialGroup hSeqGp02 = layout.createSequentialGroup();
-        hSeqGp02.addComponent(bt1).addGap(10).addComponent(bt2);
+        hSeqGp02.addGap(50).addComponent(bt1).addGap(130).addComponent(bt2);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
         GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
@@ -193,7 +193,7 @@ public class GroupLayoutTest extends JFrame {
         hGroup.addGroup(layout.createParallelGroup().addComponent(label1).addComponent(label2).addComponent(label3));
         hGroup.addGap(5);
         hGroup.addGroup(layout.createParallelGroup().addComponent(psf)
-                .addComponent(tf).addComponent(bt1).addComponent(jcombo).addGroup(hSeqGp02));
+                .addComponent(tf).addComponent(jcombo).addGroup(hSeqGp02));
         hGroup.addGap(30);
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
