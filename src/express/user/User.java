@@ -1,6 +1,6 @@
 package express.user;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 import express.manager.Manager;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class User extends JFrame {
     JButton bt4;    //投诉与建议
     JButton bt5;    //查看回复
     JButton back;   //返回键
-    String useraccount = GroupLayoutTest.account;
+    String useraccount = GroupLayout.account;
     JTextArea text1;
     JTextArea text2;
     JTextArea text3;
@@ -50,10 +50,10 @@ public class User extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (GroupLayoutTest.account.startsWith("u")){
-                    new GroupLayoutTest().groupLayoutTest();
+                if (GroupLayout.account.startsWith("u")){
+                    new GroupLayout().groupLayoutTest();
                     dispose();
-                }else if (GroupLayoutTest.account.startsWith("m")){
+                }else if (GroupLayout.account.startsWith("m")){
                     new Manager();
                     dispose();
                 }
@@ -66,9 +66,9 @@ public class User extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String sql = "select * from express_info where uid = '"+useraccount+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
+                    GroupLayout.statement = GroupLayout.conn.createStatement();
                     String s = null;
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    ResultSet res = GroupLayout.statement.executeQuery(sql);
                     int i = 1;
                     while (res.next()){
                         s += i +"：编号为" + res.getString("goodid") + "的快递";
@@ -119,9 +119,9 @@ public class User extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String sql = "select * from evaluation where uid = '"+useraccount+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
+                    GroupLayout.statement = GroupLayout.conn.createStatement();
                     String s = null;
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    ResultSet res = GroupLayout.statement.executeQuery(sql);
                     int i = 1;
                     while (res.next()){
                         s += i + "：对编号" + res.getString("goodid") + "快递的回复：";
@@ -142,8 +142,8 @@ public class User extends JFrame {
         String sql=null,name=null,phoneNumber=null,address=null;
         try {
             sql = "select * from 用户 where id = '"+useraccount+"'";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            GroupLayout.statement = GroupLayout.conn.createStatement();
+            ResultSet res = GroupLayout.statement.executeQuery(sql);
             while (res.next()) {
                 name = res.getString("username");
                 phoneNumber = res.getString("usertel");
@@ -169,11 +169,11 @@ public class User extends JFrame {
 
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(20);
@@ -186,7 +186,7 @@ public class User extends JFrame {
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(3);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(15);

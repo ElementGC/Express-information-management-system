@@ -1,6 +1,5 @@
 package express.crew;
 
-import express.GroupLayoutTest;
 import express.courier.Courier;
 import express.manager.Manager;
 
@@ -52,10 +51,10 @@ public class Crew extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (GroupLayoutTest.account.startsWith("s")){
-                    new GroupLayoutTest().groupLayoutTest();
+                if (express.GroupLayout.account.startsWith("s")){
+                    new express.GroupLayout().groupLayoutTest();
                     dispose();
-                }else if (GroupLayoutTest.account.startsWith("m")){
+                }else if (express.GroupLayout.account.startsWith("m")){
                     new Manager();
                     dispose();
                 }
@@ -82,8 +81,8 @@ public class Crew extends JFrame {
                     //'"+account+"'这里这个表示的是变量account
 
                     String  sql = "update express_info set pid = '"+pid+"' where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    GroupLayoutTest.statement.executeUpdate(sql);
+                    express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    express.GroupLayout.statement.executeUpdate(sql);
                     String s = "指派成功！";
                     JOptionPane.showMessageDialog(null, s,
                             "通知", JOptionPane.PLAIN_MESSAGE);
@@ -113,11 +112,11 @@ public class Crew extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(15);
@@ -134,7 +133,7 @@ public class Crew extends JFrame {
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(5);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(15);

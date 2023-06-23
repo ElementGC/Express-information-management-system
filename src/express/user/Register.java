@@ -1,6 +1,6 @@
 package express.user;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -65,8 +65,8 @@ public class Register extends JFrame {
         try {
             int res;
             String sql1 = "select id from 用户";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-            ResultSet res1 = GroupLayoutTest.statement.executeQuery(sql1);
+            GroupLayout.statement = GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            ResultSet res1 = GroupLayout.statement.executeQuery(sql1);
             //获取RedultSet对象获取的个数
             res1.last();
             int count = res1.getRow();
@@ -96,14 +96,14 @@ public class Register extends JFrame {
                     }
                     String sql = "select id from yh";
                     sql = "INSERT INTO 用户(username,usersex,usertel,id,pw,loc) VALUES ('"+name+"','"+sex+"','"+phoneNumber+"','"+id+"','"+password1+"','"+address+"')";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    GroupLayoutTest.statement.executeUpdate(sql);
+                    GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    GroupLayout.statement.executeUpdate(sql);
                     //弹出提示信息，申请到的账号是什么
                     String s = "注册成功！您的账号是:" + id + "请勿遗忘";
                     JOptionPane.showMessageDialog(null, s,
                             "通知", JOptionPane.PLAIN_MESSAGE);
                     //返回到登录窗口
-                    new GroupLayoutTest().groupLayoutTest();
+                    new GroupLayout().groupLayoutTest();
                     //销毁此窗口，减少内存的消耗
                     dispose();
                 } catch (Exception ee) {
@@ -114,11 +114,11 @@ public class Register extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -132,7 +132,7 @@ public class Register extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGap(5);
         vGroup.addGroup(layout.createParallelGroup().addComponent(label1).addComponent(psf));

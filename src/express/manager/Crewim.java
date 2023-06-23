@@ -1,6 +1,5 @@
 package express.manager;
 
-import express.GroupLayoutTest;
 import express.crew.PostmanManage;
 import express.crew.Postmanim;
 
@@ -78,8 +77,8 @@ public class Crewim extends JFrame {
         int count  = 0;
         try {
             String sql = "select staffnum from 工作人员";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            express.GroupLayout.statement = express.GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            ResultSet res = express.GroupLayout.statement.executeQuery(sql);
             //获取RedultSet对象获取的个数
             res.last();
             count = res.getRow();
@@ -112,8 +111,8 @@ public class Crewim extends JFrame {
 
 //            System.out.println(account);
             sql = "select * from 工作人员 where staffnum = '"+staffnum+"'";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+            ResultSet res = express.GroupLayout.statement.executeQuery(sql);
             while (res.next()) {
                 name = res.getString("staffname");
                 sex = res.getString("staffsex");
@@ -147,8 +146,8 @@ public class Crewim extends JFrame {
                         //'"+account+"'这里这个表示的是变量account
                         int res;
                         sql = "update 工作人员 set staffname = '"+name+"',staffsex = '"+sex+"',stafftel = '"+phoneNumber+"',pw = '"+password1+"',staffnum = '"+staffnum+"' where staffnum = '"+staffnum+"'";
-                        GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                        res = GroupLayoutTest.statement.executeUpdate(sql);
+                        express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                        res = express.GroupLayout.statement.executeUpdate(sql);
                         if (res == 1){
                             String s = "修改成功！";
                             JOptionPane.showMessageDialog(null, s,
@@ -173,11 +172,11 @@ public class Crewim extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -191,7 +190,7 @@ public class Crewim extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);

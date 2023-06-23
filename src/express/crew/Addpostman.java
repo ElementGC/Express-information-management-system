@@ -1,6 +1,6 @@
 package express.crew;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -59,8 +59,8 @@ public class Addpostman extends JFrame {
 
         try {
             String sql = "select postemp from 快递员";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            GroupLayout.statement = express.GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            ResultSet res = express.GroupLayout.statement.executeQuery(sql);
             //获取RedultSet对象获取的个数
             res.last();
             int count = res.getRow();
@@ -78,8 +78,8 @@ public class Addpostman extends JFrame {
         //若快递员编号重复
         try {
             String sql = "select * from 快递员 where postemp = '"+postemp+"'";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            express.GroupLayout.statement = express.GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            ResultSet res = GroupLayout.statement.executeQuery(sql);
             //获取RedultSet对象获取的个数
             res.last();
             int count = res.getRow();
@@ -110,8 +110,8 @@ public class Addpostman extends JFrame {
                     //'"+account+"'这里这个表示的是变量account
                     String sql = "select id from yh";
                     sql = "INSERT INTO 快递员(postemp,postname,postsex,posttel,id,pw) VALUES ('"+postemp+"','"+name+"','"+sex+"','"+phoneNumber+"','"+id+"','"+password1+"')";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    GroupLayoutTest.statement.executeUpdate(sql);
+                    express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    express.GroupLayout.statement.executeUpdate(sql);
                     //弹出提示信息，申请到的账号是什么
                     String s = "注册成功！您的账号是:" + id + "；" + "工号是：" + postemp + "请勿遗忘！";
                     JOptionPane.showMessageDialog(null, s,
@@ -128,11 +128,11 @@ public class Addpostman extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -146,7 +146,7 @@ public class Addpostman extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGap(5);
         vGroup.addGroup(layout.createParallelGroup().addComponent(label1).addComponent(psf));

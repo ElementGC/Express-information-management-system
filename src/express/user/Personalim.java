@@ -1,6 +1,6 @@
 package express.user;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +32,7 @@ public class Personalim extends JFrame {
     String sex = null;
     String address = null;
     String phoneNumber = null;
-    String account = GroupLayoutTest.account;
+    String account = express.GroupLayout.account;
 
     public static void main(String[] args) {
         new Personalim();
@@ -74,8 +74,8 @@ public class Personalim extends JFrame {
         // 获取用户信息
         try {
             sql = "select * from 用户 where id = '"+account+"'";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-            ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+            express.GroupLayout.statement = GroupLayout.conn.createStatement();
+            ResultSet res = express.GroupLayout.statement.executeQuery(sql);
             while (res.next()) {
                 name = res.getString("username");
                 sex = res.getString("usersex");
@@ -109,8 +109,8 @@ public class Personalim extends JFrame {
                         //'"+account+"'这里这个表示的是变量account
                         int res;
                         sql = "update 用户 set username = '"+name+"',usersex = '"+sex+"',usertel = '"+phoneNumber+"',pw = '"+password1+"',loc = '"+address+"' where id = '"+account+"'";
-                        GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                        res = GroupLayoutTest.statement.executeUpdate(sql);
+                        express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                        res = express.GroupLayout.statement.executeUpdate(sql);
                         if (res == 1){
                             String s = "修改成功！";
                             JOptionPane.showMessageDialog(null, s,
@@ -135,11 +135,11 @@ public class Personalim extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -153,7 +153,7 @@ public class Personalim extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);

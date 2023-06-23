@@ -1,6 +1,6 @@
 package express.user;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +21,7 @@ public class Suggest extends JFrame {
     String suggest;
     String pid;
     String goodid;
-    String account = GroupLayoutTest.account;
+    String account = express.GroupLayout.account;
     String aaccount;
 
     public static void main(String[] args) {
@@ -62,15 +62,15 @@ public class Suggest extends JFrame {
                 goodid = tf1.getText();
                 try {
                     String sql = "select * from express_info where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    ResultSet res = express.GroupLayout.statement.executeQuery(sql);
                     while(res.next()){
                         pid = res.getString("pid");
                         aaccount = res.getString("uid").trim();
                     }
                     sql = "select * from evaluation where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-                    res = GroupLayoutTest.statement.executeQuery(sql);
+                    express.GroupLayout.statement = express.GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+                    res = express.GroupLayout.statement.executeQuery(sql);
                     res.last();
                     int count = res.getRow();
 //                    System.out.println(count);
@@ -78,12 +78,12 @@ public class Suggest extends JFrame {
                         if (count == 0){
                             suggest = "暂无投诉";
                             sql = "insert into evaluation (pid,uid,goodid,evaluation,respond) values('"+pid+"','"+account+"','"+goodid+"','"+suggest+"','暂无回复')";
-                            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                            GroupLayoutTest.statement.executeUpdate(sql);
+                            express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                            express.GroupLayout.statement.executeUpdate(sql);
                         }
                         sql = "select * from evaluation where goodid = '"+goodid+"'";
-                        GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                        res = GroupLayoutTest.statement.executeQuery(sql);
+                        express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                        res = express.GroupLayout.statement.executeQuery(sql);
                         while (res.next()) {
                             suggest = res.getString("evaluation").trim();
                         }
@@ -111,22 +111,22 @@ public class Suggest extends JFrame {
                 suggest = tf2.getText();
                 try {
                     String sql = "select * from express_info where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    ResultSet res = express.GroupLayout.statement.executeQuery(sql);
                     while(res.next()){
                         pid = res.getString("pid");
                         aaccount = res.getString("uid").trim();
                     }
                     sql = "select * from evaluation where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-                    res = GroupLayoutTest.statement.executeQuery(sql);
+                    GroupLayout.statement = express.GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+                    res = express.GroupLayout.statement.executeQuery(sql);
                     res.last();
                     int count = res.getRow();
 //                    System.out.println(count);
                     if (account.equals(aaccount)){
                         sql = "update evaluation set evaluation = '"+suggest+"' where goodid = '"+goodid+"'";
-                        GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                        GroupLayoutTest.statement.executeUpdate(sql);
+                        express.GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                        express.GroupLayout.statement.executeUpdate(sql);
                         JOptionPane.showMessageDialog(null, "投诉成功！感谢您的反馈，我们将做出改进！",
                                 "通知", JOptionPane.PLAIN_MESSAGE);
                         new User();
@@ -143,11 +143,11 @@ public class Suggest extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -159,7 +159,7 @@ public class Suggest extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);

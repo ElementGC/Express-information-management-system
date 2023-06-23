@@ -1,6 +1,6 @@
 package express.courier;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 import express.crew.Crew;
 import express.manager.Manager;
 
@@ -62,13 +62,13 @@ public class Courier extends JFrame{
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (GroupLayoutTest.account.startsWith("p")){
-                    new GroupLayoutTest().groupLayoutTest();
+                if (GroupLayout.account.startsWith("p")){
+                    new express.GroupLayout().groupLayoutTest();
                     dispose();
-                }else if (GroupLayoutTest.account.startsWith("s")){
+                }else if (GroupLayout.account.startsWith("s")){
                     new Crew();
                     dispose();
-                }else if (GroupLayoutTest.account.startsWith("m")){
+                }else if (GroupLayout.account.startsWith("m")){
                     new Manager();
                     dispose();
                 }
@@ -87,8 +87,8 @@ public class Courier extends JFrame{
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
                     String sql = "update express_info set expressposition = '" + loc + "',expressstatus = '" + state + "' where goodid = '"+enquiry+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    int res = GroupLayoutTest.statement.executeUpdate(sql);
+                    GroupLayout.statement = GroupLayout.conn.createStatement();
+                    int res = GroupLayout.statement.executeUpdate(sql);
                     if (res == 1){
                         JOptionPane.showMessageDialog(null, "录入成功！",
                                 "通知", JOptionPane.PLAIN_MESSAGE);
@@ -98,11 +98,11 @@ public class Courier extends JFrame{
                         new Courier();
                     }
                     //根据不同的身份返回到不同窗口
-                    if (GroupLayoutTest.account.startsWith("p")){
+                    if (GroupLayout.account.startsWith("p")){
                         new Courier();
-                    }else if (GroupLayoutTest.account.startsWith("s")){
+                    }else if (GroupLayout.account.startsWith("s")){
                         new Crew();
-                    }else if (GroupLayoutTest.account.startsWith("m")){
+                    }else if (GroupLayout.account.startsWith("m")){
                         new Manager();
                     }
                     dispose();
@@ -121,8 +121,8 @@ public class Courier extends JFrame{
                 try {
                     //从输入的文本框里获取输入的数据，然后做对比
                     String sql = "select * from express_info where goodid = '"+enquiry+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    GroupLayout.statement = GroupLayout.conn.createStatement();
+                    ResultSet res = GroupLayout.statement.executeQuery(sql);
                     String s = null;
                     while (res.next()){
                         s +="编号为" + res.getString("goodid") + "的快递";
@@ -140,11 +140,11 @@ public class Courier extends JFrame{
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(15);
@@ -161,7 +161,7 @@ public class Courier extends JFrame{
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(0);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(15);

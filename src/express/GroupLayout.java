@@ -6,7 +6,6 @@ import express.manager.Manager;
 import express.user.Register;
 import express.user.User;
 
-import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,18 +18,18 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 
-public class GroupLayoutTest extends JFrame {
+public class GroupLayout extends JFrame {
     private static final long serialVersionUID = -5159330521192113057L;
 
     public static void main(String[] args) {
-        GroupLayoutTest g =  new GroupLayoutTest();
+        GroupLayout g =  new GroupLayout();
         g.groupLayoutTest();
     }
 
     //整个程序用Statement类就足够了，不需要PreparedStatement
     public static Connection conn = null;
     //本地数据库连接，jdbc:sqlserver:// 为固定格式；localhost 为数据库地址，本地数据库就用“localhost”
-    //DatabaseName=Goods 表示连接的数据库名字；encrypt=true;trustServerCertificate=true 表示让JDBC驱动使用SSL加密并跳过证书链的验证
+    //DatabaseName=kuaidi 表示连接的数据库名字；encrypt=true;trustServerCertificate=true 表示让JDBC驱动使用SSL加密并跳过证书链的验证
     public static String dbURL = "jdbc:sqlserver:// localhost;DatabaseName=kuaidi;encrypt=true;trustServerCertificate=true";
     public static Statement statement = null;
 
@@ -129,7 +128,7 @@ public class GroupLayoutTest extends JFrame {
                         String s = "账户与身份不匹配！";
                         JOptionPane.showMessageDialog(null, s,
                                 "警告", JOptionPane.WARNING_MESSAGE);
-                        new GroupLayoutTest().groupLayoutTest();
+                        new GroupLayout().groupLayoutTest();
                         dispose();
                     }
                     res = statement.executeQuery(sql);
@@ -168,7 +167,7 @@ public class GroupLayoutTest extends JFrame {
                             String s = "密码输入错误！请重新输入！";
                             JOptionPane.showMessageDialog(null, s,
                                     "警告", JOptionPane.WARNING_MESSAGE);
-                            new GroupLayoutTest().groupLayoutTest();
+                            new GroupLayout().groupLayoutTest();
                             dispose();
                         }
                     }
@@ -180,14 +179,14 @@ public class GroupLayoutTest extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
-        GroupLayout.SequentialGroup hSeqGp02 = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hSeqGp02 = layout.createSequentialGroup();
         hSeqGp02.addGap(50).addComponent(bt1).addGap(130).addComponent(bt2);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -200,7 +199,7 @@ public class GroupLayoutTest extends JFrame {
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(20);
         vGroup.addGroup(layout.createParallelGroup().addComponent(label1).addComponent(tf));
         vGroup.addGap(5);
@@ -208,7 +207,7 @@ public class GroupLayoutTest extends JFrame {
         vGroup.addGap(5);
         vGroup.addGroup(layout.createParallelGroup().addComponent(label3).addComponent(jcombo));
         vGroup.addGap(5);
-        GroupLayout.ParallelGroup vParalGroup03 = layout.createParallelGroup().addComponent(bt1).addComponent(bt2);
+        javax.swing.GroupLayout.ParallelGroup vParalGroup03 = layout.createParallelGroup().addComponent(bt1).addComponent(bt2);
         vGroup.addGroup(layout.createParallelGroup(Alignment.TRAILING).addGroup(vParalGroup03));
         vGroup.addGap(20);
         // 设置垂直组

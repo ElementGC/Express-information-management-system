@@ -1,6 +1,6 @@
 package express.manager;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 import express.courier.Courier;
 import express.crew.Crew;
 import express.crew.Respond;
@@ -46,7 +46,7 @@ public class Manager extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GroupLayoutTest().groupLayoutTest();
+                new GroupLayout().groupLayoutTest();
                 dispose();
             }
         });
@@ -104,8 +104,8 @@ public class Manager extends JFrame {
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
                     String  sql = "select goodid from express_info";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    GroupLayout.statement = GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+                    ResultSet res = GroupLayout.statement.executeQuery(sql);
                     res.last();
                     int num = res.getRow();
                     String s ="快递总件数为：" + String.valueOf(num);
@@ -119,11 +119,11 @@ public class Manager extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(5);
@@ -137,7 +137,7 @@ public class Manager extends JFrame {
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(5);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(15);

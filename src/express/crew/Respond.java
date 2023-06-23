@@ -1,6 +1,6 @@
 package express.crew;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 import express.manager.Manager;
 
 import javax.swing.*;
@@ -53,7 +53,7 @@ public class Respond extends JFrame{
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (GroupLayoutTest.account.equals("m1")){
+                if (express.GroupLayout.account.equals("m1")){
                     new Manager();
                 }else{
                     new Crew();
@@ -70,8 +70,8 @@ public class Respond extends JFrame{
                 try {
                     int res;
                     String sql = "update evaluation set respond = '"+respond+"' where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    res = GroupLayoutTest.statement.executeUpdate(sql);
+                    GroupLayout.statement = GroupLayout.conn.createStatement();
+                    res = GroupLayout.statement.executeUpdate(sql);
                     if (res == 1){
                         String s = "回复成功！";
                         JOptionPane.showMessageDialog(null, s,
@@ -96,19 +96,19 @@ public class Respond extends JFrame{
                 goodid = tf1.getText();
                 try {
                     String sql = "select * from evaluation where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-                    ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
+                    GroupLayout.statement = GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+                    ResultSet res = GroupLayout.statement.executeQuery(sql);
                     res.last();
                     int count = res.getRow();
                     if (count == 0){
                         suggest = "暂无投诉";
                         sql = "insert into evaluation (evaluation,goodid) values('"+suggest+"','"+goodid+"')";
-                        GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                        GroupLayoutTest.statement.executeUpdate(sql);
+                        GroupLayout.statement = GroupLayout.conn.createStatement();
+                        GroupLayout.statement.executeUpdate(sql);
                     }
                     sql = "select * from evaluation where goodid = '"+goodid+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    res = GroupLayoutTest.statement.executeQuery(sql);
+                    GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    res = GroupLayout.statement.executeQuery(sql);
                     while (res.next()) {
                         suggest = res.getString("evaluation").trim();
                     }
@@ -124,11 +124,11 @@ public class Respond extends JFrame{
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(15);
@@ -139,7 +139,7 @@ public class Respond extends JFrame{
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);

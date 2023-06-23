@@ -1,6 +1,6 @@
 package express.user;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +25,7 @@ public class Mail extends JFrame{
     JButton submit;
     JButton back;
 
-    String account = GroupLayoutTest.account;
+    String account = GroupLayout.account;
     String names = null;
     String namer = null;
     String adds = null;
@@ -67,8 +67,8 @@ public class Mail extends JFrame{
         //自动生成快递单号
         try {
             String sql1 = "select goodid from express_info";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            ResultSet res1 = GroupLayoutTest.statement.executeQuery(sql1);
+            express.GroupLayout.statement = GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet res1 = express.GroupLayout.statement.executeQuery(sql1);
             //获取RedultSet对象获取的个数
             res1.last();
             int count = res1.getRow();
@@ -82,8 +82,8 @@ public class Mail extends JFrame{
         /*//随机分配快递员
         try {
             String sql2 = "select postemp from 快递员";
-            GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
-            ResultSet res2 = GroupLayoutTest.statement.executeQuery(sql2);
+            GroupLayout.statement = GroupLayout.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,        ResultSet.CONCUR_READ_ONLY);
+            ResultSet res2 = GroupLayout.statement.executeQuery(sql2);
             //获取RedultSet对象获取的个数
             res2.last();
             int num = res2.getRow();
@@ -121,8 +121,8 @@ public class Mail extends JFrame{
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
                     String sql = "insert into express_info(goodid,expressstatus,expressposition,receiver,receivertel,receiverloc,sender,sendertel,senderloc,pid,uid)values('"+ goodid +"','待发货','"+adds+"','"+namer+"','"+phoneNumber+"','"+addr+"','"+names+"','"+phoneNumbes+"','"+adds+"','null','"+account+"')";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    int res = GroupLayoutTest.statement.executeUpdate(sql);
+                    GroupLayout.statement = express.GroupLayout.conn.createStatement();
+                    int res = express.GroupLayout.statement.executeUpdate(sql);
 //                    System.out.println(res);
                     String s = "寄件成功！快递单号为：" + goodid;
                     JOptionPane.showMessageDialog(null, s,
@@ -139,11 +139,11 @@ public class Mail extends JFrame{
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         // 添加间隔
         //这个间隔是每个水平连续组之间的间隔
         hGroup.addGap(5);
@@ -157,7 +157,7 @@ public class Mail extends JFrame{
         layout.setHorizontalGroup(hGroup);
 
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);

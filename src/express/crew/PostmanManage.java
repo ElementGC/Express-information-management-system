@@ -1,6 +1,6 @@
 package express.crew;
 
-import express.GroupLayoutTest;
+import express.GroupLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -62,8 +62,8 @@ public class PostmanManage extends JFrame {
                 try {
                     int res;
                     String sql = "delete from 快递员 where postemp = '"+postemp+"'";
-                    GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
-                    res = GroupLayoutTest.statement.executeUpdate(sql);
+                    express.GroupLayout.statement = GroupLayout.conn.createStatement();
+                    res = express.GroupLayout.statement.executeUpdate(sql);
                     if (res == 1){
                         String s = "快递员删除成功！";
                         JOptionPane.showMessageDialog(null, s,
@@ -100,11 +100,11 @@ public class PostmanManage extends JFrame {
         });
 
         // 为指定的 Container 创建 GroupLayout
-        GroupLayout layout = new GroupLayout(this.getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
 
         // 创建GroupLayout的水平连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
 
         //添加间隔
         hGroup.addGap(15);
@@ -118,7 +118,7 @@ public class PostmanManage extends JFrame {
         // 设置水平分组
         layout.setHorizontalGroup(hGroup);
         // 创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
-        GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+        javax.swing.GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGap(10);
         vGroup.addGroup(layout.createParallelGroup().addComponent(back));
         vGroup.addGap(5);
