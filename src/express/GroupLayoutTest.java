@@ -135,6 +135,7 @@ public class GroupLayoutTest extends JFrame {
                     res = statement.executeQuery(sql);
                     while (res.next()) {
                         String title = res.getString("pw");
+                        title.trim();
                         System.out.println(title.equals(password) ? "登录成功" : "登陆失败");
                         if(title.equals(password)){
                             setVisible(false);

@@ -16,13 +16,13 @@ public class Crew extends JFrame {
     JLabel jLabel3;
     JTextField tf1;
     JTextField tf2;
-    JButton bt1;
-    JButton bt2;
+    JButton bt1;    //快递员管理
+    JButton bt2;    //确认指派快递员
     JButton bt3;
     JButton bt4;
     JButton back;
 
-    String goodnum;
+    String goodid;
     String pid;
 
     public static void main(String[] args) {
@@ -75,13 +75,13 @@ public class Crew extends JFrame {
         bt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                goodnum = tf1.getText();
+                goodid = tf1.getText();
                 pid = tf2.getText();
                 try {
                     //从输入的文本框里获取输入的数据，然后做对比
                     //'"+account+"'这里这个表示的是变量account
 
-                    String  sql = "update expressinformation set pid = '"+pid+"' where goodnum = '"+goodnum+"'";
+                    String  sql = "update express_info set pid = '"+pid+"' where goodid = '"+goodid+"'";
                     GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
                     GroupLayoutTest.statement.executeUpdate(sql);
                     String s = "指派成功！";

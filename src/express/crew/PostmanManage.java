@@ -13,8 +13,8 @@ public class PostmanManage extends JFrame {
     JLabel jLabel2;
     JLabel jLabel3;
     JLabel jLabel4;
-    JTextField tf1;
-    JTextField tf2;
+    JTextField tf1; //要删除的快递员编号框
+    JTextField tf2; //要修改的快递员编号框
     JButton bt1;
     JButton bt2;
     JButton bt3;

@@ -99,7 +99,7 @@ public class Postmanim extends JFrame{
         }else {
             int temp = Integer.parseInt(postemp);
             //输入的工号不存在时
-            if (temp < 20001 || temp > count || temp == 0){
+            if (temp < 1 || temp > count || temp == 0){
                 JOptionPane.showMessageDialog(null, "非法快递员工号！请重新输入！",
                         "警告", JOptionPane.WARNING_MESSAGE);
                 new PostmanManage();
@@ -114,10 +114,10 @@ public class Postmanim extends JFrame{
             GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
             ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
             while (res.next()) {
-                name = res.getString(2);
-                sex = res.getString(3);
-                phoneNumber = res.getString(4);
-                postemp = res.getString(1);
+                name = res.getString("postname");
+                sex = res.getString("postsex");
+                phoneNumber = res.getString("posttel");
+                postemp = res.getString("postemp");
             }
         }
         catch (Exception ee) {
@@ -130,6 +130,7 @@ public class Postmanim extends JFrame{
         tf1.setText(postemp);
         tf2.setText(phoneNumber);
 
+        //提交更改信息监听
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

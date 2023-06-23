@@ -83,6 +83,7 @@ public class Crewim extends JFrame {
             //获取RedultSet对象获取的个数
             res.last();
             count = res.getRow();
+//            System.out.println(count);输出的是当前总个数
             count += 30000;
         } catch (Exception ee) {
             ee.printStackTrace();
@@ -99,7 +100,7 @@ public class Crewim extends JFrame {
             int temp = Integer.parseInt(staffnum);
             System.out.println(temp);
             //输入的工号不存在时
-            if (temp < 30001 || temp > count || temp == 0){
+            if (temp < 1 || temp > count || temp == 0){
                 JOptionPane.showMessageDialog(null, "非法工作人工号！请重新输入！",
                         "警告", JOptionPane.WARNING_MESSAGE);
                 new CrewManage();
@@ -114,10 +115,10 @@ public class Crewim extends JFrame {
             GroupLayoutTest.statement = GroupLayoutTest.conn.createStatement();
             ResultSet res = GroupLayoutTest.statement.executeQuery(sql);
             while (res.next()) {
-                name = res.getString(2);
-                sex = res.getString(3);
-                phoneNumber = res.getString(4);
-                staffnum = res.getString(1);
+                name = res.getString("staffname");
+                sex = res.getString("staffsex");
+                phoneNumber = res.getString("stafftel");
+                staffnum = res.getString("staffnum");
             }
         }
         catch (Exception ee) {

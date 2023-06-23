@@ -104,3 +104,9 @@ conn = DriverManager.getConnection(dbURL, "my_user", "user");
 对快递进行投诉之后，可以通过【查看回复】查看工作人员对投诉的处理情况
 
 ![image-20230615095019625](./README/image-20230615095019625.png)
+
+## 快递员窗口
+
+快递员窗口
+
+![image-20230615101718588](./README/image-20230615101718588.png)

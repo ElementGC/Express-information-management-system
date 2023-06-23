@@ -69,7 +69,7 @@ public class Courier extends JFrame{
                     new Crew();
                     dispose();
                 }else if (GroupLayoutTest.account.startsWith("m")){
-                    new Crew();
+                    new Manager();
                     dispose();
                 }
             }
